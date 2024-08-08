@@ -1,0 +1,45 @@
+Prerequisiste:
+
+Delete env folder from local
+place correct requirements.txt file inside project folder
+
+After above, Do:
+python3 -m venv env
+source env/bin/activate    (if yu see, bin is created if we created env inside ubuntu) ( in windows, bin will be something else)
+pip3 install -r requirements.txt
+python3 app.py
+
+open another terminal,
+redis-server  ( no need for env)
+
+open another terminal,
+source env/bin/activate
+type cmd for celery worker:
+aruna@DESKTOP-TNICBPO:/mnt/d/Mad2 Project/backendModule$ source env/bin/activate
+(env) aruna@DESKTOP-TNICBPO:/mnt/d/Mad2 Project/backendModule$ celery -A app:celeryStore worker --loglevel INFO
+
+open another terminal,
+source env/bin/activate
+type for celery beat
+aruna@DESKTOP-TNICBPO:/mnt/d/Mad2 Project/backendModule$ source env/bin/activate
+(env) aruna@DESKTOP-TNICBPO:/mnt/d/Mad2 Project/backendModule$ celery -A app:celeryStore beat --loglevel INFO
+celery beat v5.3.6 (emerald-rush) is starting.
+
+open another terminal,
+no need for env:will
+cd /
+cd home/aruna/go/bin
+./MailHog
+
+another terminal:
+inside env, python3 mail_user.py
+
+
+
+Audio & Video:
+video
+https://drive.google.com/file/d/1BNg0YwQonsxf12pniRR8GOHis8xmvm85/view?usp=sharing
+
+
+doc
+https://drive.google.com/file/d/1ZWRPjATkNcGLZRjCjfI66hr19todtIdL/view?usp=sharing

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Activity Report</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid;
+            text-align: left;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1> Hi, {{username}} !! Your Monthly Report: </h1>
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Order Date</th>
+            <th>Total Price</th>
+        </tr>
+        {% for userOrder in ordersForGivenMonth %}
+        <tr>
+            <td>{{userOrder.orderCategory}}</td>
+            <td>{{userOrder.orderProduct}}</td>
+            <td>{{userOrder.orderQuantity}}</td>
+            <td>{{userOrder.orderDate}}</td>
+            <td>{{userOrder.orderTotalPrice}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+
+</html>

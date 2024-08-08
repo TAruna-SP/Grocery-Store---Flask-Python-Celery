@@ -1,0 +1,211 @@
+Open cmd and type 'git'.If successfully installed, it ll show list of options of various git commands.
+Now set the username and email id by typing the below in 
+cmd prompt-> (no need for any specific path, just open cmd and type the below:)
+
+C:\Users\D>git config --global user.name "TAruna-SP"
+
+C:\Users\D>git config --global user.email "writetoarunathangavel@gmail.com"
+
+create a repo in github and clone it in your  local
+git clone repolink
+(how to get repolink? - There is a "code" button and when you clikc  it it shows HTtps url and copy it"
+
+git status - will show any new files to be added to github
+git add newfilename - file gets added to Staging Area
+git commit -m "somecomment" - when you commit, it ll move to git copy folder inside your local computer
+
+NOW yuo need to push it to github repo to see the added files in github repo using the below:
+git push origin main
+
+origin refers to the repo link
+main refers to under the repo link, there is this main branch
+so move my files to this "main" branch under the repo link/folder.
+
+flow is INSERT->ADD->COMMIT->PUSH
+
+Before adding to staging Area(or when we just created a new file) - U
+after adding to staging area(or after using git add )- A
+once you commit, "A" gets vanushed
+
+if we modified a file, it shows "M".NOw to move it to github as usual
+git add filename
+git commit -m "msg"
+git push origin main
+
+if we deleted a file,as usual
+git add deletedfilename   ( so add basically means perform the operation done on the file )
+got commit -m "msg"
+git push origin main
+now you dont see the deleted msg there
+
+if you cerated a new file in github, how to dowmload it in ur local
+git pull  (this brings all the new files whihc are not in your local fro repo)
+
+similarly if any file is modified in repo, when we do git pull, we ll get those changes into our local.
+
+............................................................
+
+now you have project in local, and you want to start the process from local..
+
+a folder you have right ..prj folder
+navigate in terminal and type 
+git init - thi creates a .git file inside your prj folder and ll mark all files as "U" untracked
+now add thm to staging area by:
+git add .  
+(why because when we have large number of files, we cant specify each and every  file name so a dot)
+now all files added to staging area
+
+now git commit -m "cmt msg"
+
+now if you do git push origin main - it ll show errro as no origin because, there is no reference to it fromthis folder right.
+so create a repo in github newly. now connect this repo to this folder in local by below:
+
+git remote add origin https://github.com/TAruna-SP/TicketShow.git
+(you can find this link when you creted the repo)
+
+now your local is connected to this origin or the repo link
+we added the origin, but we need to know the branch name..previosuly from github itself we got to know as "main"
+here we dont know, so type
+
+git branch
+it ll show master
+
+now you can do 
+git push origin master
+
+OR
+chnage this master name to main and type your old cmd as usual
+git branch -M main
+
+now if you put git ush origin main
+all chnages ll get reflected there
+
+..................................................................................................
+Branching
+
+if you see "TicketSHow" it shows 1 branch and it is nothing but "main" branch.
+if you want to create another branch under this origin - TicketShow , you can click on the dropdown button whihc shows branch name and create.
+
+now if you see in local by 
+git branch -a 
+it ll not get relflected there .so what you do , do a 
+git pull
+and then git branch -a
+it ll show list of branches created under this origin
+
+....switch to branch
+if you want to work on another barnch, 
+git checkout anotherbranchname
+and type 
+git branch -a
+it ll show * near the current branch
+
+
+now if you careted a new file, do git add . and then git commit, and finally
+git push origin newbranchname
+
+now if you see the chnages ll get pushed only to your desired branch and not on the other branch.
+you can confirm this by 
+git checkout main   (the older branch) and see if newly added files are there and go to another barnch by
+git checkout newbranch 9yu can only see teh chnages here)
+
+usually main branch is common and peole working in team will create a branch from this main branch and do their wrok
+after completion, they ll move theri work to main branch.
+to do this, what they do is
+
+git checkout main  (you are inside main branhc)
+git diff newbranch (see the diffrence between ur brahc and main branch)
+it ll show the new files
+
+now merge these chnages to main branch
+git merge newbranch
+
+you can see changes in your local, but cannot in github because you didnt psh yet.
+git push origin main
+
+............................................................
+let see about pull requests
+
+create a branch in ternimal
+
+git branch newbranchname
+
+and seethe list of branches
+
+git branch -a
+
+now switch to the newly created branch.
+how to switch...using checkout
+
+git checkout newbranch
+nd confirm the same using 
+git branch -a to see the *
+
+now yu created a file in your new branch and pushed it to your new branch.
+now you can see the created branchc in github ( remember yu created this branch from terminal in vscode, even after that
+when you push, yu can see the branch there)
+
+now, you want to pipsh ur chnages to main.
+but most of times, yu dont have permission to cpush direclty to main frim your branch
+so you need to gie a pull request to show that i need a change to be pushed to main frm my branch
+
+
+go to "pull request" in menu bar, click on it
+selet the "base" as main and the other branch as the brnahc from whihc you want to move your chnage
+and then do sumit or somthings.done.
+
+from the person who manages the "main ranch" - he receives a pullr equest in his menu.
+he open and clikc the 'merge" button.
+
+.................................................................
+resolving conflicts
+
+create a new repo and create a file with city as None (this llby default be under "main" brangc)
+now create another branch from main and edit the city as Bangalore
+now create another branch frm the above branch or main and edit city as Chennai
+
+now the two persons are coming to merge their chnages to main.
+one has city as chennai, one has city as bangalore.
+this us called conflict and ow to resolve it
+
+first person1 do a pull request and submiit it
+The owner see the pull request he received and the page shows "NO conflict". so jhe goes on "merge" button and
+chnages are moved to main branch
+
+now second person comes and do the pull request fro his chnage  to merge to main
+the owner see the pull request and seee it as conflict and see a buyyon "Resolve conflict"
+
+he clikc on that. and MANUALLY EDIT the file and keep one option as city:Bangalore and clikc  "Mark as Resolved".
+Then clikc "commit mergre" and the page refreshes and finalyy shws "Merge pull request" (as no conflicts there) button clikc on it 
+and do "confirm merge"
+
+if yu see the file in main branch, yu can see the chnage yu manually did.
+
+......................................................
+overall...
+create a repo...create 2 additional branches in addition to main .
+clone the origin url
+come to vscode
+inside a folder, do git clone origin url
+see the current branch and list of branches using
+git branch -a
+
+move to one person branch with 
+git checkout branch1
+make chnages,commt and push to branch1
+(here withot an pull requests, lets merge to main)
+
+now git checkout main
+see the diff with branch1
+git diff branch1
+git merge branch1
+git push origin main...chnages reflected to main.
+
+now second person comes to start work, first person has already made some chnages.so he need to do
+first he need to switch to his branch with
+git checkout hisbranch
+update his branch with latest using
+git pull 
+(pull default downloads code from the current branch wherer it is now)
+so to pull from main, yu need to do 
+git pull origin main (if already inside main, just git pull is fine)

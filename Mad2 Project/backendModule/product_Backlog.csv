@@ -1,0 +1,6 @@
+productId,productName,productExpiryDate,productRate,productQuantity
+1,carrot,2023-12-22T00:00:00,12,8
+2,banana,2023-12-07T00:00:00,12,1
+3,milk,2023-12-22T00:00:00,15,10
+4,viva2Prod1,2024-01-04T00:00:00,10,10
+5,viva2Prod22,2024-01-04T00:00:00,20,10
